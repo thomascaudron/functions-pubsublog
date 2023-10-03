@@ -1,0 +1,22 @@
+{
+  "name": "functions-pubsublog",
+  "version": "1.0.0",
+  "description": "Example on of how to use pubsub to provide logging for Redis Cloud deployments.",
+  "main": "index.js",
+  "scripts": {
+    "deploy": "gears-api index.js -r redis://{user}:{password}@{host}:{port}"
+  },
+  "devDependencies": {
+    "@redis/gears-api": "https://gitpkg.now.sh/RedisGears/RedisGears/js_api"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thomascaudron/functions-pubsublog.git"
+  },
+  "keywords": [],
+  "author": "Thomas Caudron",
+  "bugs": {
+    "url": "https://github.com/thomascaudron/functions-pubsublog/issues"
+  },
+  "homepage": "https://github.com/thomascaudron/functions-pubsublog#readme"
+}
