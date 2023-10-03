@@ -70,3 +70,49 @@ redis.registerFunction('test', (client)=>{
     return 'test';
 });
 ```
+
+## Using RedisInsight
+
+Connect with RedisInsight to a database with the Triggers and Functions capabilities.
+
+![first screen](images/img1.png)
+
+1. Select the Triggers and Functions screen in RedisInsight.
+2. Select '+library'.
+3. Add the below code in the library code section.
+4. Select 'Add library'
+
+```JavaScript
+#!js name=pubsublog api_version=1.0
+
+const logChannel = 'myLogChannel';
+
+function publog(client, message){
+    client.call('publish', logChannel, message);
+}
+
+redis.registerFunction('test', (client)=>{
+    publog(client, 'Start testFunction');
+    return 'test';
+});
+```
+
+![first screen](images/img2.png)
+
+1. Select the 'Pub/Sub' tab.
+2. Add the 'myLogChannel' channel name.
+3. Select 'subscribe'.
+
+![first screen](images/img3.png)
+
+Go back to the Triggers and Functions tab.
+1. Select the Functions submenu.
+2. Select the test function we added.
+3. Select 'Invoke'.
+4. Select '>_ Run in CLI' without adding any arguments or keys.
+5. The Result will be shown in the CLI, we expect to see the "test" output.
+
+![first screen](images/img4.png)
+
+Go back to the Pub/Sub tab.
+The log output is now shown with the timestamp, channel and the message.
